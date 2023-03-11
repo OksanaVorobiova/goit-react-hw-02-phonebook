@@ -1,9 +1,18 @@
-export const Contacts = ({ contacts }) => {
-  return <ul></ul>;
-};
+import { ContactList } from './Contacts.styled';
 
-/* {contacts.map(({ id, name }) => (
+export const Contacts = ({ contacts, onClick }) => {
+  return (
+    <ContactList onClick={onClick}>
+      {contacts.map(({ id, name, number }) => (
         <li key={id}>
-          <p>{name}</p>
+          <p>
+            {name}: {number}
+          </p>
+          <button type="button" name="delete" id={id}>
+            Delete
+          </button>
         </li>
-      ))} */
+      ))}
+    </ContactList>
+  );
+};

@@ -9,8 +9,6 @@ class Form extends Component {
   };
 
   handleChange = e => {
-    console.log(e);
-
     const { name, value } = e.target;
 
     this.setState({
@@ -20,13 +18,15 @@ class Form extends Component {
 
   handleFormSubmit = e => {
     e.preventDefault();
-
+    // console.log(this.state);
     this.props.onSubmit({ ...this.state, id: nanoid() });
   };
 
   render() {
+    const { name, number } = this.state;
+
     return (
-      <FormStyled onSubmit={this.handleSubmit}>
+      <FormStyled onSubmit={this.handleFormSubmit}>
         <label>
           Name
           <input
@@ -49,7 +49,9 @@ class Form extends Component {
             onChange={this.handleChange}
           />
         </label>
-        <button type="submit">Add contact</button>
+        <button type="submit" disabled={name === '' || number === ''}>
+          Add contact
+        </button>
       </FormStyled>
     );
   }
