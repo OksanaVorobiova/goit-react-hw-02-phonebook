@@ -1,4 +1,5 @@
 import { ContactList } from './Contacts.styled';
+import PropTypes from 'prop-types';
 
 export const Contacts = ({ contacts, onClick }) => {
   return (
@@ -15,4 +16,8 @@ export const Contacts = ({ contacts, onClick }) => {
       ))}
     </ContactList>
   );
+};
+
+Contacts.propTypes = {
+  contacts: PropTypes.arrayOf(PropTypes.objectOf(PropTypes.string)),
 };
